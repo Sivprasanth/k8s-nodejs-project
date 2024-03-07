@@ -35,12 +35,12 @@ jobs:
                   docker build -t ${{secrets.AWS_REPOSITORY_URL}}:$GITHUB_REF_NAME-$GITHUB_SHA . 
                   docker push ${{secrets.AWS_REPOSITORY_URL}}:$GITHUB_REF_NAME-$GITHUB_SHA
 
-                  git clone https://${{secrets.AWS_GITHUB_USER}}:${{secrets.AWS_GITHUB_TOKEN}}@github.com/KarthikVadlakonda16/gitops-k8s.git
+                  git clone https://${{secrets.AWS_GITHUB_USER}}:${{secrets.AWS_GITHUB_TOKEN}}git@github.com:Sivprasanth/gitops-k8s.git
 
                   cd gitops-k8s
 
-                  git config user.name "KarthikVadlakonda16"
-                  git config user.email "vadlakondakarthik16@gmail.com"
+                  git config user.name "Sivprasanth"
+                  git config user.email "siva.gadamsetty78@gmail.com"
 
                   yq e '.spec.template.spec.containers[0].image = "${{secrets.AWS_REPOSITORY_URL}}:${{ env.GITHUB_BRANCH }}" ' -i deployment.apps/nodejs.yaml
 
